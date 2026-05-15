@@ -1,50 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Checkout</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="checkout-box">
+<header>CHECKOUT</header>
 
-  <h2>Checkout Pesanan</h2>
+<section class="info">
 
-  <h3 id="product"></h3>
-  <p id="price"></p>
+  <h2>Pembayaran</h2>
 
-  <h3>Pilih Pembayaran</h3>
+  <p>Total Bayar: Rp 5.000</p>
 
-  <button onclick="showQRIS()">QRIS</button>
-  <button onclick="showBank()">Transfer Bank</button>
+  <h3>QRIS</h3>
 
-  <div id="payment"></div>
+  <img src="assets/qris.png" width="250">
 
-</div>
+  <br><br>
 
-<script>
-const product = localStorage.getItem('product');
-const price = localStorage.getItem('price');
+  <button>
+    Saya Sudah Bayar
+  </button>
 
-
-document.getElementById('product').innerText = product;
-document.getElementById('price').innerText = 'Rp ' + price;
-
-function showQRIS(){
-  document.getElementById('payment').innerHTML = `
-    <h3>Scan QRIS</h3>
-    <img src="assets/qris.png" width="250">
-  `;
-}
-
-function showBank(){
-  document.getElementById('payment').innerHTML = `
-    <h3>Transfer Bank</h3>
-    <p>BCA : 1234567890</p>
-    <p>MANDIRI : 987654321</p>
-  `;
-}
-</script>
+</section>
 
 </body>
 </html>

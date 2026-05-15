@@ -24,11 +24,11 @@ firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
 
-/* FIRESTORE DATABASE */
+/* FIRESTORE */
 
 const db = firebase.firestore();
 
-/* CHECK LOGIN */
+/* LOGIN CHECK */
 
 auth.onAuthStateChanged((user) => {
 

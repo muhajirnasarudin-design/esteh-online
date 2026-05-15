@@ -1,26 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Keranjang</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>KERANJANG BELANJA</header>
 
-<div class="info">
+<nav>
+  <a href="home.html">Home</a>
+  <a href="menu.html">Menu</a>
+  <a href="checkout.html">Checkout</a>
+</nav>
+
+<section class="info">
 
   <h2>Produk Dipilih</h2>
 
-  <p>ES Teh Original</p>
+  <p>🛒 ES Teh Original</p>
 
   <p>Total: Rp 5.000</p>
 
-  <a href="checkout.html">
-    <button>Checkout</button>
-  </a>
+  <button onclick="window.location.href='checkout.html'">
+    Checkout
+  </button>
 
-</div>
+</section>
 
 </body>
 </html>

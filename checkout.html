@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="checkout-box">
+
+  <h2>Checkout Pesanan</h2>
+
+  <h3 id="product"></h3>
+  <p id="price"></p>
+
+  <h3>Pilih Pembayaran</h3>
+
+  <button onclick="showQRIS()">QRIS</button>
+  <button onclick="showBank()">Transfer Bank</button>
+
+  <div id="payment"></div>
+
+</div>
+
+<script>
+const product = localStorage.getItem('product');
+const price = localStorage.getItem('price');
+
+
+document.getElementById('product').innerText = product;
+document.getElementById('price').innerText = 'Rp ' + price;
+
+function showQRIS(){
+  document.getElementById('payment').innerHTML = `
+    <h3>Scan QRIS</h3>
+    <img src="assets/qris.png" width="250">
+  `;
+}
+
+function showBank(){
+  document.getElementById('payment').innerHTML = `
+    <h3>Transfer Bank</h3>
+    <p>BCA : 1234567890</p>
+    <p>MANDIRI : 987654321</p>
+  `;
+}
+</script>
+
+</body>
+</html>

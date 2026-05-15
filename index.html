@@ -2,7 +2,9 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Login ESTEH ONLINE</title>
 
   <link rel="stylesheet" href="style.css">
@@ -13,103 +15,43 @@
 
   <h2>ESTEH ONLINE</h2>
 
-  <p class="login-text">
-    Pilih Jenis Akun
-  </p>
+  <input type="email" id="email" placeholder="Email">
 
-  <!-- PEMBELI -->
-  <div class="role-card">
+  <input type="password" id="password" placeholder="Password">
 
-    <h3>🛒 Pembeli</h3>
+  <!-- LOGIN PEMBELI -->
+  <button onclick="login('buyer')">
+    Login Pembeli
+  </button>
 
-    <p>
-      Pesan minuman online dengan mudah
-    </p>
-
-    <button onclick="showBuyerLogin()">
-      Masuk Sebagai Pembeli
-    </button>
-
-  </div>
-
-  <!-- PEMILIK TOKO -->
-  <div class="role-card owner">
-
-    <h3>🏪 Pemilik Toko</h3>
-
-    <p>
-      Kelola produk, pesanan & pembayaran
-    </p>
-
-    <button onclick="showOwnerLogin()">
-      Masuk Sebagai Pemilik
-    </button>
-
-  </div>
+  <!-- LOGIN PEMILIK -->
+  <button onclick="login('owner')">
+    Login Pemilik Toko
+  </button>
 
   <!-- PENGUNJUNG -->
-  <div class="role-card guest">
+  <button onclick="guestLogin()">
+    Masuk Sebagai Pengunjung
+  </button>
 
-    <h3>👀 Pengunjung</h3>
-
-    <p>
-      Lihat menu tanpa login
-    </p>
-
-    <button onclick="window.location.href='home.html'">
-      Masuk Sebagai Pengunjung
-    </button>
-
-  </div>
-
-  <!-- FORM LOGIN -->
-  <div id="loginForm" style="display:none; margin-top:20px;">
-
-    <input type="email" id="email" placeholder="Email">
-
-    <input type="password" id="password" placeholder="Password">
-
-    <button onclick="login()">
-      Login
-    </button>
-
-    <p>
-      Belum punya akun?
-      <a href="register.html">
-        Daftar
-      </a>
-    </p>
-
-  </div>
+  <p>
+    Belum punya akun?
+    <a href="register.html">
+      Daftar
+    </a>
+  </p>
 
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 
 <script src="firebase.js"></script>
 
 <script>
 
-let selectedRole = "";
-
-function showBuyerLogin(){
-
-  selectedRole = "buyer";
-
-  document.getElementById("loginForm").style.display = "block";
-
-}
-
-function showOwnerLogin(){
-
-  selectedRole = "owner";
-
-  document.getElementById("loginForm").style.display = "block";
-
-}
-
-function login(){
+function login(role){
 
   const email = document.getElementById("email").value;
 
@@ -119,7 +61,11 @@ function login(){
 
   .then(() => {
 
-    if(selectedRole === "owner"){
+    localStorage.setItem("role", role);
+
+    alert("Login berhasil");
+
+    if(role === "owner"){
 
       window.location.href = "admin.html";
 
@@ -138,6 +84,14 @@ function login(){
     alert(error.message);
 
   });
+
+}
+
+function guestLogin(){
+
+  localStorage.setItem("role", "guest");
+
+  window.location.href = "home.html";
 
 }
 

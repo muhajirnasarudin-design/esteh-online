@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register ESTEH</title>
+
+  <title>Register ESTEH ONLINE</title>
 
   <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
@@ -13,21 +17,63 @@
 
   <h2>Daftar Akun</h2>
 
-  <input type="email" id="email" placeholder="Email">
+  <input
+    type="text"
+    id="nama"
+    placeholder="Nama Lengkap"
+  >
 
-  <input type="password" id="password" placeholder="Password">
+  <input
+    type="email"
+    id="email"
+    placeholder="Email"
+  >
 
-  <button onclick="register()">Daftar</button>
+  <input
+    type="password"
+    id="password"
+    placeholder="Password"
+  >
+
+  <select id="role">
+
+    <option value="buyer">
+      Pembeli
+    </option>
+
+    <option value="owner">
+      Pemilik Toko
+    </option>
+
+  </select>
+
+  <button onclick="register()">
+    Daftar Sekarang
+  </button>
 
   <p>
+
     Sudah punya akun?
-    <a href="index.html">Login</a>
+
+    <a href="index.html">
+
+      Login
+
+    </a>
+
   </p>
 
 </div>
 
+<!-- FIREBASE -->
+
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<!-- FIREBASE CONFIG -->
 
 <script src="firebase.js"></script>
 
@@ -35,17 +81,41 @@
 
 function register(){
 
-  const email = document.getElementById('email').value;
+  const nama = document.getElementById("nama").value;
 
-  const password = document.getElementById('password').value;
+  const email = document.getElementById("email").value;
+
+  const password = document.getElementById("password").value;
+
+  const role = document.getElementById("role").value;
 
   auth.createUserWithEmailAndPassword(email, password)
 
-  .then(() => {
+  .then((userCredential) => {
 
-    alert("Akun berhasil dibuat");
+    const user = userCredential.user;
 
-    window.location = "index.html";
+    /* SIMPAN DATABASE */
+
+    db.collection("users").doc(user.uid).set({
+
+      nama: nama,
+
+      email: email,
+
+      role: role,
+
+      createdAt: new Date()
+
+    })
+
+    .then(() => {
+
+      alert("Register berhasil");
+
+      window.location.href = "index.html";
+
+    });
 
   })
 

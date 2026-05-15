@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ESTEH Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>ESTEH ONLINE</h1>
+</header>
+
+<div class="products">
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=800" width="100%">
+    <h3>ES Teh Original</h3>
+    <p>Rp 5.000</p>
+    <button onclick="checkout('ES Teh Original',5000)">
+      Beli
+    </button>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800" width="100%">
+    <h3>ES Teh Lemon</h3>
+    <p>Rp 8.000</p>
+    <button onclick="checkout('ES Teh Lemon',8000)">
+      Beli
+    </button>
+  </div>
+
+</div>
+
+<script>
+function checkout(product, price){
+  localStorage.setItem('product', product);
+  localStorage.setItem('price', price);
+  window.location = 'checkout.html';
+}
+</script>
+
+</body>
+</html>
